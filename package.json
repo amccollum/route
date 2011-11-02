@@ -12,5 +12,6 @@
     "ender": "lib/ender.js",
     "directories": { "lib": "lib" },
     
+    "dependencies": { "domready": "*", "ender-hashchange": "*" },
     "devDependencies": { "coffee-script": "*" }
 }
