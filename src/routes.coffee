@@ -8,9 +8,9 @@
             if hash != _hash
                 _hash = hash
                 routes.run(hash)
-            
+        
             return
-            
+        
         return
     
     routes.navigate = (hash, run) ->

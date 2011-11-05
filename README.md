@@ -1,13 +1,8 @@
-ender-routes
-============
+routes
+======
 
 Basic location hash routing Ender:
 
-    $.routes.add({
-        'foo/:year/:month/:day/:id': foo,  // Regular arguments capture a single path part
-        'bar/:first/*middle/:middle': bar  // Splat arguments capture any number of path parts
-    });
-    
     function foo(year, month, day, id) {
         // ...
     };
@@ -16,9 +11,14 @@ Basic location hash routing Ender:
         // ...
     };
 
+    $.routes.add({
+        'foo/:year/:month/:day/:id': foo,  // Regular arguments capture a single path part
+        'bar/:first/*middle/:middle': bar  // Splat arguments capture any number of path parts
+    });
+
 
 Usage with Ender
 ----------------
-After you install [Ender](http://ender.no.de), include `ender-routes` in your package:
+After you install [Ender](http://ender.no.de), include `routes` in your package:
 
-    ender add ender-routes
+    ender add routes
