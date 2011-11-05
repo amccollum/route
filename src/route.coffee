@@ -1,4 +1,4 @@
-((routes) ->
+((route) ->
     _routes = []
     _hash = null
 
@@ -7,27 +7,27 @@
             hash = $.hash()
             if hash != _hash
                 _hash = hash
-                routes.run(hash)
+                route.run(hash)
         
             return
         
         return
     
-    routes.navigate = (hash, run) ->
+    route.navigate = (hash, run) ->
         if not run
             _hash = hash
         
         $.hash(hash)
         return
     
-    routes.run = (hash) ->
+    route.run = (hash) ->
         for route in _routes
             if (m = route.pattern.exec(hash))
                 route.fn.apply(route, m.slice(1))
                     
         return
     
-    routes.add = (routes) ->
+    route.add = (routes) ->
         for path, fn of routes
             _routes.push(new Route(path, fn))
         
@@ -56,4 +56,4 @@
             @pattern = new RegExp("^#{path}$")
     
 
-)(exports ? (@['routes'] = {}))
+)(exports ? (@['route'] = {}))
