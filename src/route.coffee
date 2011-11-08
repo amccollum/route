@@ -3,13 +3,16 @@
     _hash = null
 
     $(document).ready () ->
-        $(window).bind 'hashchange', () ->
+        onchange = () ->
             hash = $.hash()
             if hash != _hash
                 _hash = hash
                 route.run(hash)
         
             return
+            
+        $(window).bind 'hashchange', onchange
+        onchange()
         
         return
     
@@ -27,7 +30,11 @@
                     
         return
     
-    route.add = (routes) ->
+    route.add = (routes, fn) ->
+        if fn
+            routes = {}
+            routes[routes] = fn
+        
         for path, fn of routes
             _routes.push(new Route(path, fn))
         
