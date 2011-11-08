@@ -2,7 +2,7 @@
     _routes = []
     _hash = null
 
-    $(document).ready () ->
+    route.init = (run) ->
         onchange = () ->
             hash = $.hash()
             if hash != _hash
@@ -12,7 +12,7 @@
             return
             
         $(window).bind 'hashchange', onchange
-        onchange()
+        onchange() if run
         
         return
     
