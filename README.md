@@ -1,5 +1,5 @@
-routes
-======
+route
+=====
 
 Basic location hash routing Ender:
 
@@ -11,11 +11,12 @@ Basic location hash routing Ender:
         // ...
     };
 
-    $.routes.add({
+    $.route.add({
         'foo/:year/:month/:day/:id': foo,  // Regular arguments capture a single path part
         'bar/:first/*middle/:middle': bar  // Splat arguments capture any number of path parts
     });
 
+    $.route.init(true);     // Initialize the library and navigate to the current hash
 
 Usage with Ender
 ----------------
