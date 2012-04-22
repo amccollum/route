@@ -1,3 +1,4 @@
-(($) ->
-    $.ender({ route: require('route') })
-)(ender)
+# (($) ->
+#     route = require('route')
+#     
+# )(ender)
