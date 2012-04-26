@@ -23,7 +23,7 @@ class route.Router
     
     add: (routes) ->
         for expr, fn of routes
-            pattern = expr
+            pattern = "^#{expr}$"
             for [transformer, replacement] in @_transformations
                 pattern = pattern.replace(transformer, replacement)
         
