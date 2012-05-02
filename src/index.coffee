@@ -36,7 +36,6 @@ class route.Router
     
         for route in @routes
             if (m = route.pattern.exec(path))
-                result = route.fn.apply(context, m.slice(1))
-                results.push(result) if result
+                results.push(route.fn.apply(context, m.slice(1)))
                 
         return results
