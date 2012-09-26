@@ -1,4 +1,4 @@
-# (($) ->
-#     route = require('route')
-#     
-# )(ender)
+(($) ->
+     $.ender
+        route: new require('route').Router
+)(ender)

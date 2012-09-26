@@ -1,7 +1,7 @@
 route
 =====
 
-Basic location hash routing Ender:
+Basic routing:
 
     function foo(year, month, day, id) {
         // ...
@@ -16,10 +16,10 @@ Basic location hash routing Ender:
         'bar/:first/*middle/:middle': bar  // Splat arguments capture any number of path parts
     });
 
-    $.route.init(true);     // Initialize the library and navigate to the current hash
+	$.route.run(document.location.pathname);
 
 Usage with Ender
 ----------------
-After you install [Ender](http://ender.no.de), include `routes` in your package:
+After you install [Ender](http://ender.no.de), include `route` in your package:
 
-    ender add routes
+    ender add route
