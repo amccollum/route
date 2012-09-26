@@ -19,12 +19,12 @@ class route.Router
             pattern = pattern.replace(/([?=,\/])/g, '\\$1')
             
             # Replace params with group captures
-            pattern = pattern.replace /(:|*)([\w\d]+)/g, (all, op, name) ->
+            pattern = pattern.replace /(:|\*)([\w\d]+)/g, (all, op, name) ->
                 @params.push(name)
-                if op == ':'
-                    return '([^/]*)'
-                else
-                    return '(.*?)'
+                
+                switch op
+                    when ':' then '([^/]*)'
+                    when '*' then '(.*?)'
 
             pattern = pattern.replace /:([\w\d]+)/g, (all, name) ->
                 @params.push(name)
