@@ -3,7 +3,6 @@ route = exports ? (@['route'] = {})
 class route.Router
     constructor: ->
         @routes = []
-        @params = ['path']
     
     add: (expr, fn) ->
         if typeof expr is 'object'
@@ -19,14 +18,15 @@ class route.Router
             pattern = pattern.replace(/([?=,\/])/g, '\\$1')
             
             # Replace params with group captures
-            pattern = pattern.replace /(:|\*)([\w\d]+)/g, (all, op, name) =>
-                @params.push(name)
+            params = ['path']
+            pattern = pattern.replace /(:|\*)([\w\d]+)/g, (all, op, name) ->
+                params.push(name)
 
                 switch op
                     when ':' then '([^/]*)'
                     when '*' then '(.*?)'
 
-            @routes.push({ expr: expr, pattern: new RegExp(pattern), fn: fn })
+            @routes.push({ expr: expr, params: params, pattern: new RegExp(pattern), fn: fn })
 
         return
 
@@ -37,7 +37,7 @@ class route.Router
             if (m = route.pattern.exec(path))
                 args = {}
                 for value, i in m
-                    args[@params[i]] = value
+                    args[route.params[i]] = value
                 
                 results.push(route.fn.call(context, args))
                 
