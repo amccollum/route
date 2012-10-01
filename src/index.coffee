@@ -26,7 +26,7 @@ class route.Router
                     when ':' then '([^/]*)'
                     when '*' then '(.*?)'
                     
-            pattern = pattern.replace(/\[([^\]]*)\]/g, '(?:$1)?')
+            pattern = pattern.replace(/\[(?!\^)([^\]]*)\]/g, '(?:$1)?')
 
             @routes.push({ expr: expr, params: params, pattern: new RegExp(pattern), fn: fn })
 
