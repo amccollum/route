@@ -13,5 +13,9 @@
     "directories": { "lib": "lib" },
     
     "dependencies": {},
-    "devDependencies": { "coffee-script": "*" }
+    "devDependencies": {
+        "coffee-script": "*",
+        "ender": "*",
+        "ender-vows": "*"
+    }
 }
