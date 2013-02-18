@@ -43,7 +43,7 @@ class route.Router
             if (m = route.pattern.exec(path))
                 args = {}
                 for value, i in m
-                    args[route.params[i]] = value
+                    args[route.params[i]] = decodeURIComponent(value)
                 
                 results.push(route.fn.call(context, args))
                 
